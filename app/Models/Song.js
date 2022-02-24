@@ -12,13 +12,36 @@ export default class Song {
 
   get Template() {
     return `
+    <div class="bg-light shadow text-center text-dark">
+    <img src="${this.albumArt}" class="img-fluid">
+    <li> ${this.title}</li>
+    <li> ${this.artist}</li>
+    <button onclick="app.songsController.getActiveSong('${this.id}')">Select Song </button>
+  </div>
 
         `;
   }
 
   get playlistTemplate() {
     return `
-
+    <div class="bg-light shadow text-center text-dark">
+    <img src="${this.albumArt}" class="img-fluid">
+    <li> ${this.title}</li>
+    <li> ${this.artist}</li>
+    <button onclick="app.songsController.playSong('${this.id}')">Play Song </button>
+    <button onclick="app.songsController.deleteSong('${this.id}')">Delete Song </button>
+  </div>
         `;
+  }
+  get ActiveTemplate() {
+    return `
+    <div class="bg-light shadow text-center text-dark">
+    <img src="${this.albumArt}" class="img-fluid">
+    <li> ${this.title}</li>
+    <li> ${this.artist}</li>
+    <audio controls src="${this.preview}"></audio>
+    <button onclick="app.songsController.addSong('${this.id}')">Add Song </button>
+  </div>
+    `;
   }
 }
